@@ -48,12 +48,9 @@ public class MainActivity extends AppCompatActivity {
 
     // calculate and display bmi
     private void calculate() {
-        // calculate the tip and total
-        double tip = height * percent;
-        double total = height + tip;
-
-        // display tip and total formatted as currency
-        bmiTextView.setText(bmiFormat.format(total));
+        double heightInMeters = height / 100;
+        double bmi = weight / Math.pow(heightInMeters, 2);
+        bmiTextView.setText(bmiFormat.format(bmi));
     }
 
     // listener object for the EditText's text-changed events
@@ -93,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 weightTextView.setText("");
                 weight = 0.0;
             }
+            calculate();
         }
 
         @Override
