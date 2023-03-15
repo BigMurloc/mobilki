@@ -15,11 +15,14 @@ public class MainActivity extends AppCompatActivity {
 
     // currency and percent formatter objects
     private static final NumberFormat heightFormat = new DecimalFormat("# cm");
+    private static final NumberFormat weightFormat = new DecimalFormat("# kg");
     private static final NumberFormat bmiFormat = new DecimalFormat("#");
 
-    private double height = 0.0; // bill amount entered by the user
+    private double height = 0.0; // height entered by the user
+    private double weight = 0.0; // weight entered by the user
     private double percent = 0.15; // initial tip percentage
-    private TextView heightTextView; // shows formatted bill amount
+    private TextView heightTextView; // shows formatted height
+    private TextView weightTextView;
     private TextView bmiTextView; // shows calculated total bill amount
 
     // called when the activity is first created
@@ -30,13 +33,17 @@ public class MainActivity extends AppCompatActivity {
 
         // get references to programmatically manipulated TextViews
         heightTextView = (TextView) findViewById(R.id.heightTextView);
+        weightTextView = findViewById(R.id.widthTextView);
         bmiTextView = (TextView) findViewById(R.id.totalTextView);
         bmiTextView.setText(bmiFormat.format(0));
 
-        // set amountEditText's TextWatcher
-        EditText amountEditText =
+        // set TextWatchers
+        EditText heightEditText =
                 (EditText) findViewById(R.id.heightEditText);
-        amountEditText.addTextChangedListener(heightEditTextWatcher);
+        heightEditText.addTextChangedListener(heightEditTextWatcher);
+
+        EditText weightEditText = findViewById(R.id.widthEditText);
+        weightEditText.addTextChangedListener(weightEditTextWatcher);
     }
 
     // calculate and display bmi
@@ -74,6 +81,29 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void beforeTextChanged(
                 CharSequence s, int start, int count, int after) { }
+    };
+
+    private final TextWatcher weightEditTextWatcher = new TextWatcher() {
+        @Override
+        public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+            try {
+                weight = Double.parseDouble(charSequence.toString());
+                weightTextView.setText(weightFormat.format(weight));
+            } catch (NumberFormatException e) {
+                weightTextView.setText("");
+                weight = 0.0;
+            }
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
     };
 }
 
