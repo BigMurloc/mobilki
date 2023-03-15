@@ -56,24 +56,6 @@ public class MainActivity extends AppCompatActivity {
         totalTextView.setText(currencyFormat.format(total));
     }
 
-    // listener object for the SeekBar's progress changed events
-    private final OnSeekBarChangeListener seekBarListener =
-            new OnSeekBarChangeListener() {
-                // update percent, then call calculate
-                @Override
-                public void onProgressChanged(SeekBar seekBar, int progress,
-                                              boolean fromUser) {
-                    percent = progress / 100.0; // set percent based on progress
-                    calculate(); // calculate and display tip and total
-                }
-
-                @Override
-                public void onStartTrackingTouch(SeekBar seekBar) { }
-
-                @Override
-                public void onStopTrackingTouch(SeekBar seekBar) { }
-            };
-
     // listener object for the EditText's text-changed events
     private final TextWatcher amountEditTextWatcher = new TextWatcher() {
         // called when the user modifies the bill amount
