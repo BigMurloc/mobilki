@@ -16,11 +16,10 @@ public class MainActivity extends AppCompatActivity {
     // currency and percent formatter objects
     private static final NumberFormat heightFormat = new DecimalFormat("# cm");
     private static final NumberFormat weightFormat = new DecimalFormat("# kg");
-    private static final NumberFormat bmiFormat = new DecimalFormat("#");
+    private static final NumberFormat bmiFormat = new DecimalFormat("#.##");
 
     private double height = 0.0; // height entered by the user
     private double weight = 0.0; // weight entered by the user
-    private double percent = 0.15; // initial tip percentage
     private TextView heightTextView; // shows formatted height
     private TextView weightTextView;
     private TextView bmiTextView; // shows calculated total bill amount
