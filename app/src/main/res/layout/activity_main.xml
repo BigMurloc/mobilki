@@ -41,25 +41,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/tip"
-        android:id="@+id/tipLabelTextView"
-        android:layout_gravity="right"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/tipTextView"
-        android:layout_gravity="fill_horizontal"
-        android:background="@color/result_background"
-        android:gravity="center"
-        android:padding="@dimen/textview_padding"
-        android:elevation="@dimen/elevation"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/total"
         android:id="@+id/totalLabelTextView"
         android:layout_gravity="right"/>

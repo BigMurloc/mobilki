@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     private double billAmount = 0.0; // bill amount entered by the user
     private double percent = 0.15; // initial tip percentage
     private TextView amountTextView; // shows formatted bill amount
-    private TextView tipTextView; // shows calculated tip amount
     private TextView totalTextView; // shows calculated total bill amount
 
     // called when the activity is first created
@@ -34,9 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         // get references to programmatically manipulated TextViews
         amountTextView = (TextView) findViewById(R.id.amountTextView);
-        tipTextView = (TextView) findViewById(R.id.tipTextView);
         totalTextView = (TextView) findViewById(R.id.totalTextView);
-        tipTextView.setText(currencyFormat.format(0));
         totalTextView.setText(currencyFormat.format(0));
 
         // set amountEditText's TextWatcher
@@ -52,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         double total = billAmount + tip;
 
         // display tip and total formatted as currency
-        tipTextView.setText(currencyFormat.format(tip));
         totalTextView.setText(currencyFormat.format(total));
     }
 
