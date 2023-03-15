@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private static final NumberFormat heightFormat = new DecimalFormat("# cm");
     private static final NumberFormat bmiFormat = new DecimalFormat("#");
 
-    private double billAmount = 0.0; // bill amount entered by the user
+    private double height = 0.0; // bill amount entered by the user
     private double percent = 0.15; // initial tip percentage
     private TextView heightTextView; // shows formatted bill amount
     private TextView bmiTextView; // shows calculated total bill amount
@@ -36,36 +36,36 @@ public class MainActivity extends AppCompatActivity {
         // set amountEditText's TextWatcher
         EditText amountEditText =
                 (EditText) findViewById(R.id.heightEditText);
-        amountEditText.addTextChangedListener(amountEditTextWatcher);
+        amountEditText.addTextChangedListener(heightEditTextWatcher);
     }
 
-    // calculate and display tip and total amounts
+    // calculate and display bmi
     private void calculate() {
         // calculate the tip and total
-        double tip = billAmount * percent;
-        double total = billAmount + tip;
+        double tip = height * percent;
+        double total = height + tip;
 
         // display tip and total formatted as currency
         bmiTextView.setText(bmiFormat.format(total));
     }
 
     // listener object for the EditText's text-changed events
-    private final TextWatcher amountEditTextWatcher = new TextWatcher() {
-        // called when the user modifies the bill amount
+    private final TextWatcher heightEditTextWatcher = new TextWatcher() {
+        // called when the user modifies the height amount
         @Override
         public void onTextChanged(CharSequence s, int start,
                                   int before, int count) {
 
-            try { // get bill amount and display currency formatted value
-                billAmount = Double.parseDouble(s.toString()) / 100.0;
-                heightTextView.setText(heightFormat.format(billAmount));
+            try {
+                height = Double.parseDouble(s.toString());
+                heightTextView.setText(heightFormat.format(height));
             }
             catch (NumberFormatException e) { // if s is empty or non-numeric
                 heightTextView.setText("");
-                billAmount = 0.0;
+                height = 0.0;
             }
 
-            calculate(); // update the tip and total TextViews
+            calculate();
         }
 
         @Override
