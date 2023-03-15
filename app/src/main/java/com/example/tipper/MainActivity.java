@@ -6,24 +6,21 @@ import android.os.Bundle;
 import android.text.Editable; // for EditText event handling
 import android.text.TextWatcher; // EditText listener
 import android.widget.EditText; // for bill amount input
-import android.widget.SeekBar; // for changing the tip percentage
-import android.widget.SeekBar.OnSeekBarChangeListener; // SeekBar listener
 import android.widget.TextView; // for displaying text
 
+import java.text.DecimalFormat;
 import java.text.NumberFormat; // for currency formatting
 
 public class MainActivity extends AppCompatActivity {
 
     // currency and percent formatter objects
-    private static final NumberFormat currencyFormat =
-            NumberFormat.getCurrencyInstance();
-    private static final NumberFormat percentFormat =
-            NumberFormat.getPercentInstance();
+    private static final NumberFormat heightFormat = new DecimalFormat("# cm");
+    private static final NumberFormat bmiFormat = new DecimalFormat("#");
 
     private double billAmount = 0.0; // bill amount entered by the user
     private double percent = 0.15; // initial tip percentage
-    private TextView amountTextView; // shows formatted bill amount
-    private TextView totalTextView; // shows calculated total bill amount
+    private TextView heightTextView; // shows formatted bill amount
+    private TextView bmiTextView; // shows calculated total bill amount
 
     // called when the activity is first created
     @Override
@@ -32,13 +29,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main); // inflate the GUI
 
         // get references to programmatically manipulated TextViews
-        amountTextView = (TextView) findViewById(R.id.amountTextView);
-        totalTextView = (TextView) findViewById(R.id.totalTextView);
-        totalTextView.setText(currencyFormat.format(0));
+        heightTextView = (TextView) findViewById(R.id.heightTextView);
+        bmiTextView = (TextView) findViewById(R.id.totalTextView);
+        bmiTextView.setText(bmiFormat.format(0));
 
         // set amountEditText's TextWatcher
         EditText amountEditText =
-                (EditText) findViewById(R.id.amountEditText);
+                (EditText) findViewById(R.id.heightEditText);
         amountEditText.addTextChangedListener(amountEditTextWatcher);
     }
 
@@ -49,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         double total = billAmount + tip;
 
         // display tip and total formatted as currency
-        totalTextView.setText(currencyFormat.format(total));
+        bmiTextView.setText(bmiFormat.format(total));
     }
 
     // listener object for the EditText's text-changed events
@@ -61,10 +58,10 @@ public class MainActivity extends AppCompatActivity {
 
             try { // get bill amount and display currency formatted value
                 billAmount = Double.parseDouble(s.toString()) / 100.0;
-                amountTextView.setText(currencyFormat.format(billAmount));
+                heightTextView.setText(heightFormat.format(billAmount));
             }
             catch (NumberFormatException e) { // if s is empty or non-numeric
-                amountTextView.setText("");
+                heightTextView.setText("");
                 billAmount = 0.0;
             }
 
