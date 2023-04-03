@@ -3,7 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Ahyios/Desktop/pjatk/mobilki/Tipper/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Ahyios/Desktop/pjatk/mobilki/Tipper/app/src/main/res/drawable/ic_baseline_healing_24.xml" value="0.340625" />
+        <entry key="..\:/Users/Ahyios/Desktop/pjatk/mobilki/Tipper/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.34479166666666666" />
+        <entry key="..\:/Users/Ahyios/Desktop/pjatk/mobilki/Tipper/app/src/main/res/layout/activity_bmi.xml" value="0.3234375" />
+        <entry key="..\:/Users/Ahyios/Desktop/pjatk/mobilki/Tipper/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Ahyios/Desktop/pjatk/mobilki/Tipper/app/src/main/res/layout/fragment_b_m_i.xml" value="0.33" />
+        <entry key="..\:/Users/Ahyios/Desktop/pjatk/mobilki/Tipper/app/src/main/res/layout/fragment_b_m_r.xml" value="0.5" />
+        <entry key="..\:/Users/Ahyios/Desktop/pjatk/mobilki/Tipper/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Users/Ahyios/Desktop/pjatk/mobilki/Tipper/app/src/main/res/layout/fragment_recipes.xml" value="0.33" />
+        <entry key="..\:/Users/Ahyios/Desktop/pjatk/mobilki/Tipper/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
       </map>
     </option>
   </component>

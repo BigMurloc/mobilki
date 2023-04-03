@@ -1,107 +1,56 @@
 package com.example.tipper;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.text.Editable; // for EditText event handling
-import android.text.TextWatcher; // EditText listener
-import android.widget.EditText; // for bill amount input
-import android.widget.TextView; // for displaying text
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat; // for currency formatting
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.example.tipper.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    // currency and percent formatter objects
-    private static final NumberFormat heightFormat = new DecimalFormat("# cm");
-    private static final NumberFormat weightFormat = new DecimalFormat("# kg");
-    private static final NumberFormat bmiFormat = new DecimalFormat("#.##");
+    ActivityMainBinding binding;
 
-    private double height = 0.0; // height entered by the user
-    private double weight = 0.0; // weight entered by the user
-    private TextView heightTextView; // shows formatted height
-    private TextView weightTextView;
-    private TextView bmiTextView; // shows calculated total bill amount
-
-    // called when the activity is first created
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState); // call superclass onCreate
-        setContentView(R.layout.activity_main); // inflate the GUI
+        super.onCreate(savedInstanceState);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        replaceFragment(new HomeFragment());
 
-        // get references to programmatically manipulated TextViews
-        heightTextView = (TextView) findViewById(R.id.heightTextView);
-        weightTextView = findViewById(R.id.widthTextView);
-        bmiTextView = (TextView) findViewById(R.id.totalTextView);
-        bmiTextView.setText(bmiFormat.format(0));
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 
-        // set TextWatchers
-        EditText heightEditText =
-                (EditText) findViewById(R.id.heightEditText);
-        heightEditText.addTextChangedListener(heightEditTextWatcher);
+            switch (item.getItemId()) {
 
-        EditText weightEditText = findViewById(R.id.widthEditText);
-        weightEditText.addTextChangedListener(weightEditTextWatcher);
+                case R.id.home:
+                    replaceFragment(new HomeFragment());
+                    break;
+                case R.id.bmi:
+                    replaceFragment(new BMIFragment());
+                    break;
+                case R.id.bmr:
+                    replaceFragment(new BMRFragment());
+                    break;
+                case R.id.recipes:
+                    replaceFragment(new RecipesFragment());
+                    break;
+
+            }
+
+            return true;
+        });
+
     }
 
-    // calculate and display bmi
-    private void calculate() {
-        double heightInMeters = height / 100;
-        double bmi = weight / Math.pow(heightInMeters, 2);
-        bmiTextView.setText(bmiFormat.format(bmi));
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout, fragment);
+        fragmentTransaction.commit();
     }
 
-    // listener object for the EditText's text-changed events
-    private final TextWatcher heightEditTextWatcher = new TextWatcher() {
-        // called when the user modifies the height amount
-        @Override
-        public void onTextChanged(CharSequence s, int start,
-                                  int before, int count) {
-
-            try {
-                height = Double.parseDouble(s.toString());
-                heightTextView.setText(heightFormat.format(height));
-            }
-            catch (NumberFormatException e) { // if s is empty or non-numeric
-                heightTextView.setText("");
-                height = 0.0;
-            }
-
-            calculate();
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) { }
-
-        @Override
-        public void beforeTextChanged(
-                CharSequence s, int start, int count, int after) { }
-    };
-
-    private final TextWatcher weightEditTextWatcher = new TextWatcher() {
-        @Override
-        public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
-            try {
-                weight = Double.parseDouble(charSequence.toString());
-                weightTextView.setText(weightFormat.format(weight));
-            } catch (NumberFormatException e) {
-                weightTextView.setText("");
-                weight = 0.0;
-            }
-            calculate();
-        }
-
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-
-        }
-    };
 }
 
 
