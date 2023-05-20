@@ -17,4 +17,8 @@
         android:id="@+id/recipes"
         android:icon="@drawable/ic_baseline_home_24"
         android:title="Recipes" />
+    <item
+        android:id="@+id/quiz"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Quiz" />
 </menu>

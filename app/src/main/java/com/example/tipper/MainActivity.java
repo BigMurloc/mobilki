@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.tipper.databinding.ActivityMainBinding;
+import com.example.tipper.quiz.QuizFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.recipes:
                     replaceFragment(new RecipesFragment());
                     break;
+                case R.id.quiz:
+                    replaceFragment(new QuizFragment());
+                break;
 
             }
 
