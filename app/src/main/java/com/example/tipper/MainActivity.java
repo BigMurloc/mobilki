@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.home:
                     replaceFragment(new HomeFragment());
                     break;
-                case R.id.bmi:
-                    replaceFragment(new BMIFragment());
+                case R.id.chart:
+                    replaceFragment(new BMIChartFragment());
                     break;
                 case R.id.bmr:
                     replaceFragment(new BMRFragment());

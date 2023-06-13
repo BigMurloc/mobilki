@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_baseline_home_24"
         android:title="Home" />
     <item
-        android:id="@+id/bmi"
+        android:id="@+id/chart"
         android:icon="@drawable/ic_baseline_home_24"
         android:title="BMI" />
     <item
@@ -15,7 +15,7 @@
         android:title="BMR" />
     <item
         android:id="@+id/recipes"
-        android:icon="@drawable/ic_baseline_home_24"
+        android:icon="@drawable/ic_baseline_healing_24"
         android:title="Recipes" />
     <item
         android:id="@+id/quiz"
