@@ -35,8 +35,8 @@ class BMIFragment : Fragment() {
         heightEditText = view.findViewById(R.id.heightEditText)
         weightEditText = view.findViewById(R.id.weightEditText)
         bmiTextView = view.findViewById(R.id.bmiTextView)
-        heightEditText.addTextChangedListener(heightTextWatcher)
-        weightEditText.addTextChangedListener(weightTextWatcher)
+        heightEditText?.addTextChangedListener(heightTextWatcher)
+        weightEditText?.addTextChangedListener(weightTextWatcher)
     }
 
     private val heightTextWatcher: TextWatcher = object : TextWatcher {

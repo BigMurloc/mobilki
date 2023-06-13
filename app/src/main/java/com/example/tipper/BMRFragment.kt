@@ -44,10 +44,10 @@ class BMRFragment : Fragment() {
         heightEditText = view.findViewById(R.id.heightEditText)
         weightEditText = view.findViewById(R.id.weightEditText)
         bmrTextView = view.findViewById(R.id.bmrTextView)
-        genderRadioGroup.setOnCheckedChangeListener(genderRadioGroupListener)
-        ageEditText.addTextChangedListener(ageTextWatcher)
-        heightEditText.addTextChangedListener(heightTextWatcher)
-        weightEditText.addTextChangedListener(weightTextWatcher)
+        genderRadioGroup?.setOnCheckedChangeListener(genderRadioGroupListener)
+        ageEditText?.addTextChangedListener(ageTextWatcher)
+        heightEditText?.addTextChangedListener(heightTextWatcher)
+        weightEditText?.addTextChangedListener(weightTextWatcher)
     }
 
     private val genderRadioGroupListener =

@@ -90,10 +90,10 @@ class QuizFragment : Fragment() {
         } else {
             val scoreFragment = QuizScoreFragment.newInstance(score, questions.size)
             Objects.requireNonNull(activity)
-                .supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.frame_layout, scoreFragment)
-                .commit()
+                ?.supportFragmentManager
+                ?.beginTransaction()
+                ?.replace(R.id.frame_layout, scoreFragment)
+                ?.commit()
         }
     }
 
